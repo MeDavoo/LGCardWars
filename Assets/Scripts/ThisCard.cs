@@ -7,11 +7,11 @@ using TMPro;
 
 public class ThisCard : MonoBehaviour
 {
-    public List<MonsterCard> thisCard = new List<MonsterCard>();
+    private List<MonsterCard> thisCard = new List<MonsterCard>();
     public int thisId;
 
     public int id;
-    public int elementId; 
+    public int elementId;
     public string cardName;
     public int cost;
     public string cardDescription;
@@ -32,29 +32,35 @@ public class ThisCard : MonoBehaviour
 
     void Start()
     {
-        thisCard[0] = CardDatabase.monsterCardList[thisId];
+        thisCard.Add(CardDatabase.monsterCardList[thisId]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        id = thisCard[0].id;
-        cardName = thisCard[0].cardName;
-        cost = thisCard[0].cost;
-        cardDescription = thisCard[0].cardDescription;
-        attack = thisCard[0].attack;
-        defence = thisCard[0].defence;
+        if (id != thisId)
+        {
+            thisCard[0] = CardDatabase.monsterCardList[thisId];
 
-        monsterImage = thisCard[0].monsterImage;
-        borderElementImage = thisCard[0].borderElementImage;
+            id = thisCard[0].id;
+            cardName = thisCard[0].cardName;
+            cost = thisCard[0].cost;
+            cardDescription = thisCard[0].cardDescription;
+            attack = thisCard[0].attack;
+            defence = thisCard[0].defence;
 
-        nameText.text = "" + cardName;
-        costText.text = "" + cost;
-        cardDescriptionText.text = "" + cardDescription;
-        attackText.text = "" + attack;
-        defenceText.text = "" + defence;
+            monsterImage = thisCard[0].monsterImage;
+            borderElementImage = thisCard[0].borderElementImage;
 
-        monsterImgObj.sprite = monsterImage;
-        borderElementImgObj.sprite = borderElementImage;
+            nameText.text = "" + cardName;
+            costText.text = "" + cost;
+            cardDescriptionText.text = "" + cardDescription;
+            attackText.text = "" + attack;
+            defenceText.text = "" + defence;
+
+            monsterImgObj.sprite = monsterImage;
+            borderElementImgObj.sprite = borderElementImage;
+        }
+
     }
 }
