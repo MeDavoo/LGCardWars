@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class MonsterCard 
 {
     public int id;
-    public int elementId;
     public string cardName;
+
+    [HideInInspector]
+    public int elementId;
     public int cost;
     public string cardDescription;
     public int attack;

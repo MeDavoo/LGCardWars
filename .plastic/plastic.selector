@@ -1,0 +1,4 @@
+repository "LGCardWars@DavidMaddin@cloud"
+  path "/"
+    br "/main"
+    co "/main"
