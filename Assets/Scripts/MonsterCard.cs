@@ -15,6 +15,7 @@ public class MonsterCard
     public string cardDescription;
     public int attack;
     public int defence;
+    public int stars;
 
     public Sprite monsterImage;
     public Sprite borderElementImage;
@@ -24,16 +25,16 @@ public class MonsterCard
 
     }
 
-    public MonsterCard(int Id, int ElementId, string CardName, int Cost, string CardDescription, int Attack, int Defence, Sprite MonsterImg, Sprite BorderElementImage)
+    public MonsterCard(int Id, int ElementId, int Attack, int Defence, int Cost, int Stars, string CardName, string CardDescription, Sprite MonsterImg)
     {
         id = Id;
         elementId = ElementId;
-        cardName = CardName;
-        cost = Cost;
-        cardDescription = CardDescription;
         attack = Attack;
         defence = Defence;
+        cost = Cost;
+        stars = Stars;
+        cardName = CardName;
+        cardDescription = CardDescription;
         monsterImage = MonsterImg;
-        borderElementImage = BorderElementImage;
     }
 }

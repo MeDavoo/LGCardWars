@@ -17,6 +17,7 @@ public class Card : MonoBehaviour
     private string cardDescription;
     private int attack;
     private int defence;
+    private int stars;
 
     private TMP_Text nameText;
     private TMP_Text costText;
@@ -30,7 +31,7 @@ public class Card : MonoBehaviour
     private Sprite borderElementImage;
     private Image borderElementImgObj;
 
-    private GameObject cardContainer,bgsDirectory;
+    private GameObject cardContainer,bgsDirectory,starsSliderObj;
 
 
 
@@ -60,6 +61,7 @@ public class Card : MonoBehaviour
         monsterImgObj = bgsDirectory.transform.GetChild(1).GetComponent<Image>();
         borderElementImage = Resources.Load<Sprite>("Art/Cards/MonsterArt/Elements/0");
         borderElementImgObj = bgsDirectory.transform.GetChild(3).GetComponent<Image>();
+        starsSliderObj = bgsDirectory.transform.GetChild(2).GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -70,14 +72,55 @@ public class Card : MonoBehaviour
             thisCard[0] = CardDatabase.monsterCardList[CardId];
 
             id = thisCard[0].id;
+            elementId = thisCard[0].elementId;
             cardName = thisCard[0].cardName;
             cost = thisCard[0].cost;
             cardDescription = thisCard[0].cardDescription;
             attack = thisCard[0].attack;
             defence = thisCard[0].defence;
+            stars = thisCard[0].stars;
+
+
+            if (elementId == 0)
+            {
+                borderElementImage = Resources.Load<Sprite>("Art/Cards/MonsterArt/Elements/0");
+            }
+            else if (elementId == 1)
+            {
+                borderElementImage = Resources.Load<Sprite>("Art/Cards/MonsterArt/Elements/1");
+            }
+            else if (elementId == 2)
+            {
+                borderElementImage = Resources.Load<Sprite>("Art/Cards/MonsterArt/Elements/2");
+            }
+            else if (elementId == 3)
+            {
+                borderElementImage = Resources.Load<Sprite>("Art/Cards/MonsterArt/Elements/3");
+            }
+
+            if (stars == 1)
+            {
+                starsSliderObj.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 12);
+            }
+            else if (stars == 2)
+            {
+                starsSliderObj.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 22);
+            }
+            else if (stars == 3)
+            {
+                starsSliderObj.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 31);
+            }
+            else if (stars == 4)
+            {
+                starsSliderObj.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 41);
+            }
+            else if (stars == 5)
+            {
+                starsSliderObj.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
+            }
+
 
             monsterImage = thisCard[0].monsterImage;
-            borderElementImage = thisCard[0].borderElementImage;
 
             nameText.text = "" + cardName;
             costText.text = "" + cost;
